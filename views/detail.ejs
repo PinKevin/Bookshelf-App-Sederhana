@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h2>Detail Buku</h2>
+			<% if (!book) {%>
+			<div class="alert alert-danger" role="alert">
+				Data buku tidak ada! <br />
+				<a href="/book" class="alert-link">&laquo; Kembali ke daftar buku.</a>
+			</div>
+			<% } else {%>
+			<div class="card" style="width: 18rem">
+				<div class="card-body">
+					<h5 class="card-title"><%= book.judul %></h5>
+					<h6 class="card-subtitle mb-2"><%= book.penulis %></h5>
+					<h6 class="card-subtitle mb-2 text-muted"><%= book.tahunTerbit %></h6>
+					<p class="card-text"><%= book.ringkasan %></p>
+					<h6 class="card-subtitle mb-2 text-muted">
+						Jumlah Halaman : <%= book.jumlahHalaman %>
+					</h6>
+					<a href="/book/edit/<%= book.judul %>" class="btn btn-info badge">Ubah</a>
+					<form action="/book?_method=DELETE" method="post" class="d-inline">
+						<input type="hidden" name="judul" value="<%= book.judul %>" />
+						<button
+							type="submit"
+							class="btn btn-danger badge"
+							onclick="return confirm('Yakin ingin hapus buku?');"
+						>
+							Hapus
+						</button>
+					</form>
+					<a href="/book" class="card-link d-block mt-3"
+						>&laquo; Kembali ke daftar buku</a
+					>
+				</div>
+			</div>
+			<% } %>
+		</div>
+	</div>
+</div>

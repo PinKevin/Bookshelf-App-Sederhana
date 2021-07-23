@@ -1,0 +1,60 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Tambah Buku</h2>
+
+			<% if (typeof errors != 'undefined') { %>
+			<div class="alert alert-danger" role="alert">
+				<ul>
+					<% errors.forEach(error => { %>
+					<li><%= error.msg %></li>
+					<% }) %>
+				</ul>
+			</div>
+			<% } %>
+
+			<form method="post" action="/book">
+				<div class="mb-3">
+					<label for="judul" class="form-label">Judul</label>
+					<input type="text" class="form-control" id="judul" name="judul" required />
+				</div>
+				<div class="mb-3">
+					<label for="penulis" class="form-label">Penulis</label>
+					<input type="text" class="form-control" id="penulis" name="penulis" required />
+				</div>
+				<div class="mb-3">
+					<label for="tahunTerbit" class="form-label">Tahun Terbit</label>
+					<input
+						type="text"
+						class="form-control"
+						id="tahunTerbit"
+						name="tahunTerbit"
+						required
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="jumlahHalaman" class="form-label">Jumlah Halaman</label>
+					<input
+						type="text"
+						class="form-control"
+						id="jumlahHalaman"
+						name="jumlahHalaman"
+						required
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="ringkasan" class="form-label">Ringkasan</label>
+					<textarea
+						type="text"
+						class="form-control"
+						id="ringkasan"
+						name="ringkasan"
+						required
+					>
+					</textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Tambah Buku</button>
+			</form>
+		</div>
+	</div>
+</div>
