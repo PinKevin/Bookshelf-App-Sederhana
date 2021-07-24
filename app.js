@@ -78,7 +78,9 @@ app.post(
                 throw new Error('Judul sudah ada!');
             }
             return true;
-        })
+        }),
+        check('tahunTerbit', 'Tahun harus dalam angka').isNumeric(),
+        check('jumlahHalaman', 'Jumlah halaman harus dalam angka').isNumeric()
     ],
     (req, res) => {
         const errors = validationResult(req);
@@ -133,6 +135,8 @@ app.put(
             }
             return true;
         }),
+        check('tahunTerbit', 'Tahun harus dalam angka').isNumeric(),
+        check('jumlahHalaman', 'Jumlah halaman harus dalam angka').isNumeric(),
     ], 
     (req, res) => {
         const errors = validationResult(req);
@@ -141,7 +145,7 @@ app.put(
                 title: 'Ubah Data Kontak',
                 layout: 'layouts/form-layout',
                 errors: errors.array(),
-                contact: req.body,
+                book: req.body,
             });
         } else {
             Book.updateOne(
